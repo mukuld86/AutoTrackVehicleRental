@@ -1,0 +1,78 @@
+﻿@model AutoTrackVehicleRental.Web.Models.VehicleViewModel
+
+@{
+    ViewData["Title"] = "Remove Vehicle";
+}
+
+<div class="container mt-4">
+
+    <h2>Remove Vehicle</h2>
+
+    <div class="alert alert-warning">
+        Are you sure you want to remove this vehicle?
+    </div>
+
+    <div class="card mb-4">
+
+        <div class="card-body">
+
+            <p>
+                <strong>Vehicle ID:</strong>
+                @Model.VehicleId
+            </p>
+
+            <p>
+                <strong>Vehicle Name:</strong>
+                @Model.VehicleName
+            </p>
+
+            <p>
+                <strong>Type:</strong>
+                @Model.Type
+            </p>
+
+            <p>
+                <strong>Availability:</strong>
+
+                @if (Model.AvailabilityStatus)
+                {
+                    <span class="text-success">
+                        Available
+                    </span>
+                }
+                else
+                {
+                    <span class="text-danger">
+                        Not Available
+                    </span>
+                }
+            </p>
+
+            <p>
+                <strong>Date of Registration:</strong>
+                @Model.DateOfRegistration.ToString("dd-MM-yyyy")
+            </p>
+
+        </div>
+
+    </div>
+
+    <form asp-action="RemoveVehicleConfirmed"
+          method="post">
+
+        <input type="hidden"
+               asp-for="VehicleId" />
+
+        <button type="submit"
+                class="btn btn-danger">
+            Yes, Remove
+        </button>
+
+        <a asp-action="ViewAllVehicles"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

@@ -1,3 +1,9 @@
+using AutoTrackVehicleRental.DataAccess;
+using AutoTrackVehicleRental.DataAccess.Interfaces;
+using AutoTrackVehicleRental.DataAccess.Repositories;
+using AutoTrackVehicleRental.Services.Interfaces;
+using AutoTrackVehicleRental.Services.Services;
+
 namespace AutoTrackVehicleRental.Web
 {
     public class Program
@@ -8,6 +14,10 @@ namespace AutoTrackVehicleRental.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<VehicleDbContext>();
+            builder.Services.AddScoped<IRepository, Repository>();
+            builder.Services.AddScoped<IVehicleService, VehicleService>();
 
             var app = builder.Build();
 
@@ -28,7 +38,7 @@ namespace AutoTrackVehicleRental.Web
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Vehicle}/{action=ViewAllVehicles}/{id?}");
 
             app.Run();
         }
