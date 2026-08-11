@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="readme.md" />
+  </Folder>
   <Project Path="AutoTrackVehicleRental.DataAccess/AutoTrackVehicleRental.DataAccess.csproj" />
   <Project Path="AutoTrackVehicleRental.Services/AutoTrackVehicleRental.Services.csproj" />
   <Project Path="AutoTrackVehicleRental.Web/AutoTrackVehicleRental.Web.csproj" />
